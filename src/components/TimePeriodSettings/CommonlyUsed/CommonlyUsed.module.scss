@@ -1,0 +1,18 @@
+@import '../../../common/styles/scss/mixins';
+@import '../../../common/styles/scss/variables';
+
+.commonlyUsedBlock {
+  @include displayFlex(column);
+  .titleCommonlyUsed {
+
+  }
+
+  .valueOptions {
+    .ulOptions {
+      margin: 0;
+      padding: 0;
+      column-count: 2;
+      list-style: none;
+    }
+  }
+}

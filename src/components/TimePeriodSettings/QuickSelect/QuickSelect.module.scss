@@ -1,0 +1,27 @@
+@import '../../../common/styles/scss/mixins';
+
+.quickSelectBlock {
+  @include displayFlex(column);
+  width: 100%;
+  .quickSelect {
+    @include displayFlex(row, space-between);
+    @include heightWidth(38px, 100%);
+
+    .titleQuickSelect {
+
+    }
+
+    .buttonBlock {
+      button {
+        img {
+          @include heightWidth(15px, 15px);
+        }
+      }
+    }
+  }
+
+  .settingsPanel {
+    @include displayFlex(row, space-between);
+    @include heightWidth(40px,100%);
+  }
+}

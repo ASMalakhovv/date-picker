@@ -1,0 +1,14 @@
+@import '../../common/styles/scss/mixins';
+
+.timePeriodSettingsBlock {
+  @include displayFlex(row, center);
+  @include heightWidth(auto, 386px);
+  padding: 8px;
+  background: #85a7ca;
+
+  .timePeriodSettingsContainer {
+    @include displayFlex(column);
+    @include heightWidth(auto, 370px);
+    background: coral;
+  }
+}
