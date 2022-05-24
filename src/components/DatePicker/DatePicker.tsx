@@ -20,6 +20,7 @@ export type StartEndType = {
 }
 type DatePickerPropsType = Partial<StartEndType> & {
     onTimeChange: (start: ParametersTime, end: ParametersTime) => void
+    onRefresh: (start: ParametersTime, end: ParametersTime, refreshInterval: number) => void
 }
 
 const defaultStart: ParametersTime | 'now' = {period: 'Last', time: 30, unitTime: 'minutes'}
@@ -36,6 +37,7 @@ export const DatePicker = React.memo(
             start = defaultStart,
             end = defaultEnd,
             onTimeChange,
+            onRefresh,
             ...props
         }
             : DatePickerPropsType
@@ -43,15 +45,11 @@ export const DatePicker = React.memo(
         //date
         const period: Period[] = ['Next', 'Last']
         const unitTime: UnitTime[] = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'months', 'years']
-        const {period: periodDefault, time: timeDefault, unitTime: unitTimeDefault} = start as RelativeTime
 
         //hooks
         const [isOpenSetting, setIsOpenSetting] = useState<boolean>(false)
-        const [valuePeriod, setValuePeriod] = useState<Period>(periodDefault)
-        const [relativeTimeValueSettings, setRelativeTimeValueSettings] = useState<number>(timeDefault)
-        const [relativeUnitTimeValueSettings, setRelativeUnitTimeValueSettings] = useState<UnitTime>(unitTimeDefault)
         const [isCommonlyUsedTime, setIsCommonlyUsedTime] = useState<ValueCommonlyUsedTime | null>(null)
-        debugger
+
         //callbacks
         const openTimeSetting = useCallback(() => {
             setIsOpenSetting(!isOpenSetting)
@@ -60,9 +58,8 @@ export const DatePicker = React.memo(
         const setTimeSettings = useCallback((settings: { start: ParametersTime, end: ParametersTime }
         ) => {
             const {start, end} = calculationStartEndValues(settings)
-            debugger
             onTimeChange(start, end)
-        }, [setValuePeriod, setRelativeTimeValueSettings, setRelativeUnitTimeValueSettings])
+        }, [])
 
         const changeIsCommonlyUsedTime = useCallback((value: ValueCommonlyUsedTime | null) => {
             setIsCommonlyUsedTime(value)
@@ -83,14 +80,12 @@ export const DatePicker = React.memo(
                         onTimeChange={onTimeChange}
                         period={period}
                         unitTime={unitTime}
-                        valuePeriod={valuePeriod}
-                        relativeTimeValue={relativeTimeValueSettings}
-                        relativeUnitTimeValue={relativeUnitTimeValueSettings}
                         setTimeSettings={setTimeSettings}
                         isCommonlyUsedTime={isCommonlyUsedTime}
                         changeIsCommonlyUsedTime={changeIsCommonlyUsedTime}
                         start={start}
                         end={end}
+                        onRefresh={onRefresh}
                     />}
             </div>
         );

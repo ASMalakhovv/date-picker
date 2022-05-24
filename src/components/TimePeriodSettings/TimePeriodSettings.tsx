@@ -11,14 +11,12 @@ type TimePeriodSettingsProps = {
     onTimeChange: (start: ParametersTime | 'now', end: ParametersTime | 'now') => void
     period: Period[]
     unitTime: UnitTime[]
-    valuePeriod: Period
-    relativeTimeValue: number
-    relativeUnitTimeValue: UnitTime
     setTimeSettings: (settings: { start: ParametersTime, end: ParametersTime }) => void
     isCommonlyUsedTime:ValueCommonlyUsedTime | null
     changeIsCommonlyUsedTime:(value:ValueCommonlyUsedTime | null) => void
     start:ParametersTime
     end:ParametersTime
+    onRefresh: (start: ParametersTime, end: ParametersTime, refreshInterval: number) => void
 }
 
 export const TimePeriodSettings = React.memo(
@@ -27,14 +25,12 @@ export const TimePeriodSettings = React.memo(
             onTimeChange,
             period,
             unitTime,
-            valuePeriod,
-            relativeTimeValue,
-            relativeUnitTimeValue,
             setTimeSettings,
             isCommonlyUsedTime,
             changeIsCommonlyUsedTime,
             start,
             end,
+            onRefresh,
             ...props
         }
             : TimePeriodSettingsProps) => {
@@ -57,7 +53,9 @@ export const TimePeriodSettings = React.memo(
                         onChangeStatus={changeIsCommonlyUsedTime}
                         setTimeSettings={setTimeSettings}
                     />
-                    <RefreshSettings/>
+                    <RefreshSettings
+                        onRefresh={onRefresh}
+                    />
                 </div>
             </div>
         );

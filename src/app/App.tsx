@@ -15,10 +15,18 @@ export const App = React.memo(() => {
     const [end, setEnd] = useState<ParametersTime>('now');
 
     //callbacks
-    const onTimeChange = useCallback((start:ParametersTime,end:ParametersTime) => {
+    const onTimeChange = useCallback((start: ParametersTime, end: ParametersTime) => {
         setStart(start)
         setEnd(end)
     }, [])
+
+    const onRefresh = (start: ParametersTime, end: ParametersTime, refreshInterval: number) => {
+        return new Promise(resolve => {
+            setTimeout(resolve, 100);
+        }).then(() => {
+            console.log(start, end, refreshInterval);
+        });
+    };
 
     return (
         <div className={s.app}>
@@ -26,6 +34,7 @@ export const App = React.memo(() => {
                 start={start}
                 end={end}
                 onTimeChange={onTimeChange}
+                onRefresh={onRefresh}
             />
         </div>
     );

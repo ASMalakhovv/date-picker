@@ -59,7 +59,10 @@ export const QuickSelect = React.memo(
 
         //callbacks
         const onChangePeriod = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-            setPeriodLocalValue(e.currentTarget.value as Period)
+            const isPeriodValue = (x: any): x is Period => period.includes(x)
+            if (isPeriodValue(e.currentTarget.value)) {
+                setPeriodLocalValue(e.currentTarget.value)
+            }
         }, [setPeriodLocalValue])
         const onChangeRelativeTimeValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
             setRelativeTimeLocalValue(Number(e.currentTarget.value))
