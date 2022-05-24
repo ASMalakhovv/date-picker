@@ -1,8 +1,8 @@
 import React, {useCallback, useState} from 'react';
 import {StartEndType} from '../../DatePicker/DatePicker';
-import {convertSettingToDisplay} from "../../../utils/convertSettingToDisplay";
-import {ValueCommonlyUsedTime} from "../../../utils/formattingValueLItoDate";
-import {convertToDatesForViewing} from "../../../utils/convertToDatesForViewing";
+import {convertSettingToDisplay} from '../../../utils/convertSettingToDisplay';
+import {ValueCommonlyUsedTime} from '../../../utils/formattingValueLItoDate';
+import {convertToDatesForViewing} from '../../../utils/convertToDatesForViewing';
 import arrow from '../../../assets/image/arrow.png'
 
 type  PropsType = {
@@ -10,10 +10,15 @@ type  PropsType = {
 } & StartEndType
 
 export const DisplaySelectedSetting = React.memo(({start, end, isCommonlyUsedTime, ...props}: PropsType) => {
-    const [isShowDates, setIsShowDates] = useState<boolean>(false)
-    const selectedSettings = convertSettingToDisplay(start, end, isCommonlyUsedTime)
 
-    const {start:showDatesStart,end:showDatesEnd} = convertToDatesForViewing(start,end,isCommonlyUsedTime)
+    //hooks
+    const [isShowDates, setIsShowDates] = useState<boolean>(false)
+
+    //actions
+    const selectedSettings = convertSettingToDisplay(start, end, isCommonlyUsedTime)
+    const {start: showDatesStart, end: showDatesEnd} = convertToDatesForViewing(start, end, isCommonlyUsedTime)
+
+    //callbacks
     const changeIsShowDates = useCallback((status: boolean) => {
         setIsShowDates(status)
     }, [setIsShowDates])
@@ -26,7 +31,7 @@ export const DisplaySelectedSetting = React.memo(({start, end, isCommonlyUsedTim
             </div>
             :
             <div onClick={() => changeIsShowDates(false)}>
-                {showDatesStart}<img src={arrow} height={50} width={50}/>{showDatesEnd}
+                {showDatesStart}<img src={arrow} height={50} width={50} alt='arrow'/>{showDatesEnd}
             </div>
     );
 });

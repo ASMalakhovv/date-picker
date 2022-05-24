@@ -1,7 +1,7 @@
 import React, {MouseEvent, useCallback} from 'react';
 import s from './CommonlyUsed.module.scss'
-import {CommonlyUsedTime, ParametersTime} from "../../DatePicker/DatePicker";
-import {formattingValueLItoDate, ValueCommonlyUsedTime} from "../../../utils/formattingValueLItoDate";
+import {CommonlyUsedTime, ParametersTime} from '../../DatePicker/DatePicker';
+import {formattingValueLItoDate, ValueCommonlyUsedTime} from '../../../utils/formattingValueLItoDate';
 
 type PropsType = {
     onChangeStatus: (value: ValueCommonlyUsedTime | null) => void
@@ -16,10 +16,12 @@ export const CommonlyUsedValues = React.memo(
             ...props
         }: PropsType
     ) => {
+
         //date
         const valueOptions: CommonlyUsedTime = ['Today', 'This week', 'This month',
             'This year', 'Yesterday', 'Week to date', 'Month to date', 'Year to date'
         ] as const
+
         //callbacks
         const isCommonlyUsedValues = useCallback((x: any): x is ValueCommonlyUsedTime => {
             return valueOptions.includes(x)
@@ -28,13 +30,12 @@ export const CommonlyUsedValues = React.memo(
             if (isCommonlyUsedValues(e.currentTarget.textContent)) {
                 onChangeStatus(e.currentTarget.textContent)
                 const {start, end} = formattingValueLItoDate(e.currentTarget.textContent)
-                debugger
                 setTimeSettings({start, end})
             }
         }, [])
+
         //action
         const valuesLi = valueOptions.map((v: string, i: number) => <li key={i} onClick={onClickValueLI}>{v}</li>)
-
 
         return (
             <div className={s.commonlyUsedBlock}>

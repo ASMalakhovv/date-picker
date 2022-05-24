@@ -1,9 +1,14 @@
 import React from 'react';
 
-export const Button = React.memo(() => {
+type PropsType = {
+    callOnRefresh: () => void
+}
+
+export const Button = React.memo(({callOnRefresh, ...props}: PropsType) => {
     return (
         <div>
-            <button>Refresh</button>
+            <button onClick={callOnRefresh}>Refresh</button>
         </div>
     );
 });
+

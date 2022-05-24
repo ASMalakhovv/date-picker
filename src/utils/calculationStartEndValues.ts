@@ -1,5 +1,4 @@
-import {Period, UnitTime} from "../app/App";
-import {ParametersTime, RelativeTime, StartEndType} from "../components/DatePicker/DatePicker";
+import {ParametersTime, RelativeTime, StartEndType} from '../components/DatePicker/DatePicker';
 
 enum DateFormat {
     Relative_Now = 0,
@@ -14,7 +13,7 @@ export type ResultEnteredTime = {
     end: string
 }
 
-export const calculationStartEndValues = (settings: { start: ParametersTime , end: ParametersTime }): StartEndType => {
+export const calculationStartEndValues = (settings: { start: ParametersTime, end: ParametersTime }): StartEndType => {
     const {start, end} = settings
     if (typeof start === 'object' && typeof end === 'string') {
         return generateTimeSpan({timeFormat: 0, start, end})

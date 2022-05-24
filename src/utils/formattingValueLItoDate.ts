@@ -1,14 +1,14 @@
-import {CommonlyUsedTime, RelativeTime} from "../components/DatePicker/DatePicker";
-import {Period, UnitTime} from "../app/App";
-import {getDaysInMonth} from "./getDaysInMonth";
+import {CommonlyUsedTime, RelativeTime} from '../components/DatePicker/DatePicker';
+import {Period, UnitTime} from '../app/App';
+import {getDaysInMonth} from './getDaysInMonth';
 
 type FormattedCommonlyUsedTime = {
     start: RelativeTime
     end: RelativeTime | 'now'
 }
-
 export type ValueCommonlyUsedTime = CommonlyUsedTime[number]
-export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedCommonlyUsedTime => {
+
+export const formattingValueLItoDate = (value: ValueCommonlyUsedTime): FormattedCommonlyUsedTime => {
     const date = new Date()
     switch (value) {
         case 'Today': {
@@ -23,7 +23,7 @@ export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedC
                 end: {period: endPeriod, time: endTime, unitTime: endUnitTime}
             }
         }
-        case "This week": {
+        case 'This week': {
             const day: number = date.getDay()
             const startTime: number = Math.abs(0 - (day + 1))
             const startPeriod: Period = 'Last'
@@ -36,7 +36,7 @@ export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedC
                 end: {period: endPeriod, time: endTime, unitTime: endUnitTime}
             }
         }
-        case "This month": {
+        case 'This month': {
             const month = date.getMonth()
             const year = date.getFullYear()
             const numberDayMonth: number = getDaysInMonth(month, year)
@@ -76,7 +76,7 @@ export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedC
                 end: {period: endPeriod, time: endTime, unitTime: endUnitTime}
             }
         }
-        case "Week to date": {
+        case 'Week to date': {
             const day: number = date.getDay()
             const startTime: number = Math.abs(0 - (day + 1))
             const startPeriod: Period = 'Last'
@@ -86,7 +86,7 @@ export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedC
                 end: 'now'
             }
         }
-        case "Month to date":{
+        case 'Month to date': {
             const startTime: number = date.getDate()
             const startPeriod: Period = 'Last'
             const startUnitTime: UnitTime = 'days'
@@ -95,7 +95,7 @@ export const formattingValueLItoDate = (value: ValueCommonlyUsedTime):FormattedC
                 end: 'now'
             }
         }
-        case "Year to date":{
+        case 'Year to date': {
             const startTime: number = date.getMonth() + 1
             const startPeriod: Period = 'Last'
             const startUnitTime: UnitTime = 'months'

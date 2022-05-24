@@ -1,15 +1,13 @@
-import React, {ChangeEvent, useCallback, useMemo, useState} from 'react';
+import React, {ChangeEvent, useCallback, useState} from 'react';
 import arrowLeft from '../../../assets/image/arrow-left.png';
 import arrowRight from '../../../assets/image/arrow-right.png';
-
 import s from './QuickSelect.module.scss'
 import {Period, UnitTime} from "../../../app/App";
-import {ParametersTime, RelativeTime} from "../../DatePicker/DatePicker";
-import {ValueCommonlyUsedTime} from "../../../utils/formattingValueLItoDate";
-import {changeTimeForQuickSelect} from "../../../utils/changeTimeForQuickSelect";
+import {ParametersTime} from '../../DatePicker/DatePicker';
+import {ValueCommonlyUsedTime} from '../../../utils/formattingValueLItoDate';
+import {changeTimeForQuickSelect} from '../../../utils/changeTimeForQuickSelect';
 
 type QuickSelectProps = {
-    onClickApply: (start: ParametersTime | 'now', end: ParametersTime | 'now') => void
     period: Period[]
     unitTime: UnitTime[]
     setTimeSettings: (settings: { start: ParametersTime, end: ParametersTime }) => void
@@ -22,7 +20,6 @@ type QuickSelectProps = {
 export const QuickSelect = React.memo(
     (
         {
-            onClickApply,
             period,
             unitTime,
             setTimeSettings,
@@ -35,7 +32,7 @@ export const QuickSelect = React.memo(
             : QuickSelectProps) => {
 
 
-        //formatting incoming start and end values
+        //actions
         const parametersTime = changeTimeForQuickSelect(start, end, isCommonlyUsedTime)
         let periodDefault: Period = 'Last'
         let timeDefault: number = 30
@@ -53,7 +50,7 @@ export const QuickSelect = React.memo(
         const [relativeTimeLocalValue, setRelativeTimeLocalValue] = useState<number>(timeDefault)
         const [relativeUnitTimeLocalValue, setRelativeUnitTimeLocalValue] = useState<UnitTime>(unitTimeDefault)
 
-
+        //actions
         const optionPeriod = period.map((p: Period, i: number) => <option key={i}>{p}</option>)
         const optionUnitTime = unitTime.map((t: UnitTime, i: number) => <option key={i}>{t}</option>)
 

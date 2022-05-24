@@ -1,12 +1,10 @@
-import {ParametersTime, RelativeTime} from "../components/DatePicker/DatePicker";
-import {ValueCommonlyUsedTime} from "./formattingValueLItoDate";
+import {ParametersTime} from '../components/DatePicker/DatePicker';
+import {ValueCommonlyUsedTime} from './formattingValueLItoDate';
 
 type ConvertedShowDate = { start: string, end: string }
 
 export const convertToDatesForViewing = (start: ParametersTime, end: ParametersTime,
                                          commonlyUsedTime: ValueCommonlyUsedTime | null): ConvertedShowDate => {
-    const arrTime = [start, end]
-    const obj = arrTime.find(e => typeof e === 'object')
     if (commonlyUsedTime && typeof start === 'object' && typeof end === 'object') {
         const {period: startPeriod, time: startTime, unitTime: startUnitTime} = start
         const {period: endPeriod, time: endTime, unitTime: endUnitTime} = end
@@ -23,5 +21,3 @@ export const convertToDatesForViewing = (start: ParametersTime, end: ParametersT
     }
     return {start: "", end: ""}
 }
-/*const relativeObj = obj as RelativeTime
-        return `${relativeObj.period} ${relativeObj.time} ${relativeObj.unitTime}`*/
