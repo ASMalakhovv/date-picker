@@ -83,15 +83,17 @@ export const DatePicker = React.memo(
 
         return (
             <div className={s.datePickerBlock}>
-                <ControlPanel
-                    onClickSetting={openTimeSetting}
-                    start={start}
-                    end={end}
-                    isCommonlyUsedTime={isCommonlyUsedTime}
-                />
-                <Button
-                    callOnRefresh={callOnRefresh}
-                />
+                <div className={s.datePickerContainer}>
+                    <ControlPanel
+                        onClickSetting={openTimeSetting}
+                        start={start}
+                        end={end}
+                        isCommonlyUsedTime={isCommonlyUsedTime}
+                    />
+                    <Button
+                        callOnRefresh={callOnRefresh}
+                    />
+                </div>
                 {isOpenSetting &&
                     <TimePeriodSettings
                         period={period}

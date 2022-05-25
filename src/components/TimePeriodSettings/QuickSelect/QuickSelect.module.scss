@@ -1,11 +1,16 @@
 @import '../../../common/styles/scss/mixins';
+@import '../../../common/styles/scss/variables';
 
 .quickSelectBlock {
   @include displayFlex(column);
   width: 100%;
+
   .quickSelect {
     @include displayFlex(row, space-between);
     @include heightWidth(38px, 100%);
+    @include font(Arial, 14px);
+    font-weight: bold;
+    color: $colorBlack;
 
     .titleQuickSelect {
 
@@ -13,6 +18,10 @@
 
     .buttonBlock {
       button {
+        border: 1px solid;
+        border-radius: 2px;
+        margin: 0 2px;
+
         img {
           @include heightWidth(15px, 15px);
         }
@@ -22,6 +31,25 @@
 
   .settingsPanel {
     @include displayFlex(row, space-between);
-    @include heightWidth(40px,100%);
+    @include heightWidth(40px, 100%);
+
+    select, input {
+      height: 30px;
+      @include font(Arial, 14px);
+      border-color: $colorGrey;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    button {
+      height: 30px;
+      color: $colorBlue;
+      border-color: $colorBlue;
+      border-radius: 4px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

@@ -1,6 +1,10 @@
-@import "../../common/styles/scss/mixins";
+@import '../../common/styles/scss/mixins';
 
 .datePickerBlock {
-  @include displayFlex(row,space-between,center);
-  @include heightWidth(80px,500px)
+  @include displayFlex(column);
+  @include heightWidth(360px, auto);
+
+  .datePickerContainer {
+    @include displayFlex(row, center, center)
+  }
 }

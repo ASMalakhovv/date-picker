@@ -1,0 +1,57 @@
+@import '../../../common/styles/scss/mixins';
+@import '../../../common/styles/scss/variables';
+
+.displayBlock {
+  @include displayFlex();
+  @include heightWidth(80px, 318px);
+
+
+  .selectedSettings {
+    @include displayFlex(row, space-between, center);
+    @include heightWidth(80px, 318px);
+
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    p {
+      margin-left: 8px;
+      @include font();
+    }
+
+    span {
+      margin-right: 8px;
+      color: $colorBlue;
+      @include font();
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .showDates {
+    @include displayFlex(row, center, center);
+    @include heightWidth(80px, 318px);
+    @include font();
+
+
+    p:nth-child(1) {
+      margin-right: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    p:nth-child(3) {
+      margin-left: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,21 +1,19 @@
-@import "../../common/styles/scss/mixins";
+@import '../../common/styles/scss/mixins';
+@import '../../common/styles/scss/variables';
 
 .controlPanelBlock {
-  @include displayFlex(row,flex-start,center);
-  @include heightWidth(80px,400px);
-  border: 1px solid grey;
+  @include displayFlex(row, flex-start, center);
+  @include heightWidth(80px, 400px);
+  border: 1px solid $colorGrey;
+  border-radius: 4px;
 
   .imgCalendar {
     img {
       @include heightWidth(80px, 80px);
     }
-    border-right: 1px solid grey;
-    @include heightWidth(80px, 80px);
+
+    border-right: 1px solid $colorGrey;
+    @include heightWidth(79px, 80px);
   }
 
-  .imgArrow {
-    img {
-      @include heightWidth(50px, 35px);
-    }
-  }
 }

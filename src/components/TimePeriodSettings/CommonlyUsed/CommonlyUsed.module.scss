@@ -3,16 +3,30 @@
 
 .commonlyUsedBlock {
   @include displayFlex(column);
-  .titleCommonlyUsed {
 
+  .titleCommonlyUsed {
+    @include font(Arila, 16px);
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: $colorBlack;
   }
 
   .valueOptions {
     .ulOptions {
-      margin: 0;
-      padding: 0;
+      margin: 2px 0;
+      padding: 2px;
       column-count: 2;
       list-style: none;
+      color: $colorBlue;
+      @include font(Arial, 16px);
+
+      li {
+        margin-bottom: 8px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

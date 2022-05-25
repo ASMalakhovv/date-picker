@@ -1,6 +1,6 @@
 @import '../common/styles/scss/mixins';
 
 .app {
-  @include displayFlex(row,center,center);
-  @include heightWidth(100vh,100%)
+  @include displayFlex(row, center, center);
+  @include heightWidth(100vh, 100%)
 }

@@ -4,6 +4,7 @@ import {convertSettingToDisplay} from '../../../utils/convertSettingToDisplay';
 import {ValueCommonlyUsedTime} from '../../../utils/formattingValueLItoDate';
 import {convertToDatesForViewing} from '../../../utils/convertToDatesForViewing';
 import arrow from '../../../assets/image/arrow.png'
+import s from './DisplaySelectedSetting.module.scss'
 
 type  PropsType = {
     isCommonlyUsedTime: ValueCommonlyUsedTime | null
@@ -24,15 +25,20 @@ export const DisplaySelectedSetting = React.memo(({start, end, isCommonlyUsedTim
     }, [setIsShowDates])
 
     return (
-        !isShowDates
-            ?
-            <div onClick={() => changeIsShowDates(true)}>
-                {selectedSettings} Show dates
-            </div>
-            :
-            <div onClick={() => changeIsShowDates(false)}>
-                {showDatesStart}<img src={arrow} height={50} width={50} alt='arrow'/>{showDatesEnd}
-            </div>
+        <div className={s.displayBlock}>
+            {!isShowDates
+                ?
+                <div onClick={() => changeIsShowDates(true)} className={s.selectedSettings}>
+                    <p>{selectedSettings}</p>
+                    <span>Show dates</span>
+                </div>
+                :
+                <div onClick={() => changeIsShowDates(false)} className={s.showDates}>
+                    <p>{showDatesStart}</p>
+                    <img src={arrow} height={50} width={30} alt='arrow'/>
+                    <p>{showDatesEnd}</p>
+                </div>}
+        </div>
     );
 });
 

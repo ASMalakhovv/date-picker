@@ -4,11 +4,10 @@
   @include displayFlex(row, center);
   @include heightWidth(auto, 386px);
   padding: 8px;
-  background: #85a7ca;
+  box-shadow: 0px 5px 9px 0px #D6CBD2;
 
   .timePeriodSettingsContainer {
     @include displayFlex(column);
     @include heightWidth(auto, 370px);
-    background: coral;
   }
 }
